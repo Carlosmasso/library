@@ -44,7 +44,9 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-//   background: '#1a1a1a',
-//   text: '#ffffff',
-//   primary: '#00ccff',
+  primary,
+  secondary,
+  tertiary,
+  sizes,
+  spacing: (rem) => `${rem * 12}px`,
 };

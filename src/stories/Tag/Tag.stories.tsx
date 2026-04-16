@@ -5,7 +5,7 @@ import { fn } from 'storybook/test';
 import { Tag } from './Tag';
 
 const meta = {
-  title: 'Example/Tag',
+  title: 'Tag',
   component: Tag,
   parameters: {
     layout: 'centered',

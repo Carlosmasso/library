@@ -22,17 +22,30 @@
 
 // export default preview;
 
+import type { Preview } from '@storybook/react-vite';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../src/themes';
 
-export const decorators = [
-  withThemeFromJSXProvider({
-    themes: {
-      light: lightTheme,
-      dark: darkTheme,
+const preview: Preview = {
+  decorators: [
+    withThemeFromJSXProvider({
+      themes: {
+        light: lightTheme,
+        dark: darkTheme,
+      },
+      defaultTheme: 'light',
+      Provider: ThemeProvider,
+    }),
+  ],
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
     },
-    defaultTheme: 'light',
-    Provider: ThemeProvider,
-  }),
-];
+  },
+};
+
+export default preview;
