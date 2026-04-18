@@ -11,6 +11,9 @@ const meta = {
   tags: ['autodocs'],
   args: { onClick: fn() },
   argTypes: {
+    defaultValue: {
+      control: 'text',
+    },
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'tertiary'],

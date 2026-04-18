@@ -1,106 +1,115 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import type { CSSProperties, HTMLAttributes } from "react";
 
-export interface ToggleProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  orientation?: "horizontal" | "vertical";
-  variant?: "primary" | "secondary" | "tertiary";
-  size?: "small" | "medium" | "large";
-  defaultValue?: string;
-  options?: { label: string; value: string }[];
-  onChange?: (value: string) => void;
-  style?: CSSProperties;
-}
-
-const PADDINGS = {
-  small: 0.5,
-  medium: 1,
-  large: 1.5,
-};
+const PADDINGS = { small: 0.5, medium: 1, large: 1.5 };
 
 const StyledToggle = styled.div<{
   $variant: string;
   $size: "small" | "medium" | "large";
   $orientation: string;
+  $itemCount: number;
+  $selectedIndex: number;
 }>`
-  ${({ $variant, $size, $orientation, theme }) => `
-  display: flex;
-  line-height: 1;
-  font-weight: 700;
-  overflow: hidden; /* IMPORTANTE: Esto arregla lo que preguntaste al principio */
-  align-items: center;     
-  border-radius: ${theme.spacing(0.5)};
-  border: 1px solid ${theme[$variant]?.main};
-  font-size: ${theme.sizes[$size].fontSize};
-  flex-direction: ${$orientation === "vertical" ? "column" : "row"};
-  font-family: "Nunito Sans", sans-serif; 
-  width: fit-content;
+  ${({ $variant, $size, $orientation, $itemCount, $selectedIndex, theme }) => {
+    const isVertical = $orientation === "vertical";
+    const bgMain = theme[$variant]?.main || "#000";
+    const bgText = theme[$variant]?.text || "#fff";
 
-  .toggle-option {
-    cursor: pointer;
-    text-align: center;
-    width: 100%;
-    padding: ${theme.spacing(PADDINGS[$size])};
-    transition: all 0.2s ease;
-    
-    &.horizontal:not(:last-child) {
-      border-right: 1px solid ${theme[$variant]?.main};
-    }
-    &.vertical:not(:last-child) {
-      border-bottom: 1px solid ${theme[$variant]?.main};
-    }
+    return `
+      display: flex;
+      position: relative; /* Para el slider absoluto */
+      line-height: 1;
+      font-weight: 700;
+      overflow: hidden;
+      border-radius: ${theme.spacing(0.5)};
+      border: 1px solid ${bgMain};
+      font-size: ${theme.sizes[$size].fontSize};
+      flex-direction: ${isVertical ? "column" : "row"};
+      font-family: "Nunito Sans", sans-serif;
+      width: fit-content;
+      background: ${bgText};
 
-    &.selected {
-      color: ${theme[$variant]?.text};
-      background: ${theme[$variant]?.main};
-    }
-    &:not(.selected) {
-      background: #fff; /* O el color de fondo de tu app */
-      color: ${theme[$variant]?.main};
-    }
-    &:hover:not(.selected) {
-      filter: brightness(0.95);
-    }
-  }
-`};
+      /* EL SLIDER QUE SE MUEVE */
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        background: ${bgMain};
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* Cálculo de posición y tamaño */
+        width: ${isVertical ? "100%" : `${100 / $itemCount}%`};
+        height: ${isVertical ? `${100 / $itemCount}%` : "100%"};
+        top: ${isVertical ? `${(100 / $itemCount) * $selectedIndex}%` : "0"};
+        left: ${isVertical ? "0" : `${(100 / $itemCount) * $selectedIndex}%`};
+      }
+
+      .toggle-option {
+        position: relative;
+        z-index: 2; /* Por encima del slider */
+        cursor: pointer;
+        text-align: center;
+        width: ${isVertical ? "100%" : "120px"}; /* Ancho fijo para que el slider cuadre */
+        padding: ${theme.spacing(PADDINGS[$size])};
+        transition: color 0.3s ease;
+        color: ${bgMain};
+
+        &.selected {
+          color: ${bgText};
+        }
+
+        &:not(:last-child) {
+          border-${isVertical ? "bottom" : "right"}: 1px solid ${bgMain};
+        }
+      }
+    `;
+  }};
 `;
 
 export const Toggle = ({
+  options = [],
   defaultValue,
   size = "medium",
   variant = "primary",
   orientation = "horizontal",
-  options = [],
   onChange,
   ...rest
-}: ToggleProps) => {
+}: any) => {
+  // Inicializamos en null para que nada esté seleccionado por defecto
   const [selected, setSelected] = useState<string | null>(null);
 
-  // Inicializar estado
   useEffect(() => {
     if (defaultValue) {
-      setSelected(defaultValue);
-    } else if (options.length > 0) {
-      setSelected(options[0].value);
+      const exists = options.some((opt: any) => opt.value === defaultValue);
+      setSelected(exists ? defaultValue : null); // Si el defaultValue existe en options, lo seleccionamos; si no, nada se selecciona
+    } else {
+      setSelected(options?.[0]?.value); // Si no hay defaultValue, seleccionamos la primera opción
     }
-  }, [defaultValue, options]);
+  }, [options, defaultValue]);
+
+  const selectedIndex = options.findIndex((opt: any) => opt.value === selected);
 
   const handleOnClick = (value: string) => {
     setSelected(value);
-    if (onChange) onChange(value);
+    onChange?.(value);
   };
+
+  console.log("Selected value:", selected, defaultValue);
 
   return (
     <StyledToggle
       $size={size}
       $variant={variant}
       $orientation={orientation}
+      $itemCount={options.length}
+      $selectedIndex={selectedIndex}
       {...rest}
     >
       {options.map(({ label, value }) => (
         <div
           key={value}
-          onClick={() => handleOnClick(value)} // CAMBIADO: de onChange a onClick
+          onClick={() => handleOnClick(value)}
           className={`toggle-option ${selected === value ? "selected" : ""} ${orientation}`}
         >
           {label}
