@@ -20,5 +20,6 @@ declare module 'styled-components' {
       };
     };
     spacing: (rem: number) => string;
+    palette: object;
   }
 }

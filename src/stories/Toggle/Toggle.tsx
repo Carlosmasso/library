@@ -1,6 +1,5 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useEffect, useState, useRef, use } from "react";
-import type { CSSProperties, HTMLAttributes } from "react";
 
 const PADDINGS = { small: 0.5, medium: 1, large: 1.5 };
 
@@ -26,7 +25,7 @@ const StyledToggle = styled.div<{
       border: 1px solid ${bgMain};
       font-size: ${theme.sizes[$size].fontSize};
       flex-direction: ${isVertical ? "column" : "row"};
-      font-family: "Nunito Sans", sans-serif;
+      font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
       width: fit-content;
       background: ${bgText};
 

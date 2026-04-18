@@ -35,10 +35,43 @@ const tertiary = {
   light: '#9affa2ff',
   text: '#ffffff',
 }
+
+const palette = {
+  blue: {
+    main: '#d1ecf1',
+    light: '#bee5eb',
+    dark: '#0c5460',
+    text: '#0c5460',
+    border: '#bee5eb',
+  },
+  green: {
+    main: '#d4edda',
+    light: '#c3e6cb',
+    dark: '#155724',
+    text: '#155724',
+    border: '#c3e6cb',
+  },
+  orange: {
+    main: '#fff3cd',
+    light: '#ffeeba',
+    dark: '#856404',
+    text: '#856404',
+    border: '#ffeeba',
+  },
+  red: {
+    main: '#f8d7da',
+    light: '#f5c6cb',
+    dark: '#721c24',
+    text: '#721c24',
+    border: '#f5c6cb',
+  },
+}
+
 export const lightTheme = {
   primary,
   secondary,
   tertiary,
+  palette,
   sizes,
   spacing: (rem) => `${rem * 12}px`,
 };
@@ -47,6 +80,7 @@ export const darkTheme = {
   primary,
   secondary,
   tertiary,
+  palette,
   sizes,
   spacing: (rem) => `${rem * 12}px`,
 };

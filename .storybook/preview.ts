@@ -25,7 +25,7 @@
 import type { Preview } from '@storybook/react-vite';
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from '../src/themes';
+import { lightTheme, darkTheme } from '../src/customThemes';
 
 const preview: Preview = {
   decorators: [
