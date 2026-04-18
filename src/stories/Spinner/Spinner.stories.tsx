@@ -34,7 +34,7 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const SecondaryWithTrack: Story = {
   args: {
     variant: 'secondary',
     size: 40,
