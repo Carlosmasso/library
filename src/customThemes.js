@@ -76,11 +76,65 @@ export const lightTheme = {
   spacing: (rem) => `${rem * 12}px`,
 };
 
+// -----------------------------------------------------
+
+const primaryDark = {
+  dark: '#005bb5',
+  main: '#00ccff', // El dark del light pasa a ser el main aquí
+  light: '#33d6ff',
+  text: '#ffffff',
+}
+
+const secondaryDark = {
+  dark: '#5a0000',
+  main: '#ff4d4d',
+  light: '#ff8080',
+  text: '#ffffff',
+}
+
+const tertiaryDark = {
+  dark: '#004d07',
+  main: '#00ff15',
+  light: '#66ff73',
+  text: '#000000', // El verde neón suele leerse mejor con texto oscuro
+}
+
+const paletteDark = {
+  blue: {
+    main: '#072c33',
+    light: '#0c5460',
+    dark: '#d1ecf1',
+    text: '#bee5eb',
+    border: '#0c5460',
+  },
+  green: {
+    main: '#0b2d13',
+    light: '#155724',
+    dark: '#d4edda',
+    text: '#c3e6cb',
+    border: '#155724',
+  },
+  orange: {
+    main: '#3d2e02',
+    light: '#856404',
+    dark: '#fff3cd',
+    text: '#ffeeba',
+    border: '#856404',
+  },
+  red: {
+    main: '#3b0f13',
+    light: '#721c24',
+    dark: '#f8d7da',
+    text: '#f5c6cb',
+    border: '#721c24',
+  },
+}
+
 export const darkTheme = {
-  primary,
-  secondary,
-  tertiary,
-  palette,
-  sizes,
-  spacing: (rem) => `${rem * 12}px`,
+  primary: primaryDark,
+  secondary: secondaryDark,
+  tertiary: tertiaryDark,
+  palette: paletteDark,
+  sizes, // Se mantienen iguales
+  spacing: (rem) => `${rem * 12}px`, // Se mantiene igual
 };

@@ -26,7 +26,8 @@ const StyledToggle = styled.div<{
       font-size: ${theme.sizes[$size].fontSize};
       flex-direction: ${isVertical ? "column" : "row"};
       font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      width: fit-content;
+      width: 100%;   /* Ocupa el ancho completo */
+      min-width: 200px;     /* Opcional: un mínimo para que no se vea minúsculo */
       background: ${bgText};
 
       /* EL SLIDER QUE SE MUEVE */
@@ -46,13 +47,20 @@ const StyledToggle = styled.div<{
 
       .toggle-option {
         position: relative;
-        z-index: 2; /* Por encima del slider */
+        z-index: 2;
         cursor: pointer;
         text-align: center;
-        width: ${isVertical ? "100%" : "120px"}; /* Ancho fijo para que el slider cuadre */
-        padding: ${theme.spacing(PADDINGS[$size])};
+        
+        flex: 1; /* Hace que todas las opciones midan lo mismo si el padre crece */
+        padding: ${theme.spacing(PADDINGS[$size])} ${theme.spacing(PADDINGS[$size] * 2)}; /* Más padding lateral */
+        
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition: color 0.3s ease;
         color: ${bgMain};
+        display: grid;
+        place-content: center;
 
         &.selected {
           color: ${bgText};
