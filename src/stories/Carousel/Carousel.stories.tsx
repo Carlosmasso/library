@@ -61,7 +61,7 @@ const CUSTOM_SLIDES = CARD_COLORS.map((color, i) => (
  * - ARIA compliant (role="region", role="tab", aria-live)
  */
 const meta: Meta<typeof Carousel> = {
-  title: "Carousel",
+  title: "Components/Carousel",
   component: Carousel,
   tags: ["autodocs"],
   parameters: {

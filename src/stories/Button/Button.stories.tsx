@@ -4,7 +4,7 @@ import { Trash } from 'lucide-react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
   parameters: {
     layout: "centered",

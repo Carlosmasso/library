@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import { Toggle } from './Toggle';
 
 const meta = {
-  title: 'Toggle',
+  title: 'Components/Toggle',
   component: Toggle,
   parameters: {
     layout: 'centered',

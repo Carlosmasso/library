@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import { Tag } from './Tag';
 
 const meta = {
-  title: 'Tag',
+  title: 'Components/Tag',
   component: Tag,
   parameters: {
     layout: 'centered',

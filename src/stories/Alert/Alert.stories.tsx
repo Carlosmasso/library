@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert } from "./Alert";
 
 const meta: Meta<typeof Alert> = {
-  title: "Alert",
+  title: "Components/Alert",
   component: Alert,
   parameters: {
     layout: "centered",
