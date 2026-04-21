@@ -16,9 +16,9 @@ const sizes = {
 }
 
 const primary = {
-  dark: '#00ccff',
+  dark: '#004186ff',
   main: '#007bff',
-  light: '#007bff',
+  light: '#75b8ffff',
   text: '#ffffff',
 }
 
