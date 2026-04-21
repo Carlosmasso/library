@@ -1,7 +1,7 @@
-import type { Preview } from '@storybook/react-vite';
-import { withThemeFromJSXProvider } from '@storybook/addon-themes';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from '../src/customThemes';
+import type { Preview } from "@storybook/react-vite";
+import { withThemeFromJSXProvider } from "@storybook/addon-themes";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "../src/customThemes";
 
 const preview: Preview = {
   decorators: [
@@ -10,7 +10,7 @@ const preview: Preview = {
         light: lightTheme,
         dark: darkTheme,
       },
-      defaultTheme: 'light',
+      defaultTheme: "light",
       Provider: ThemeProvider,
     }),
   ],
@@ -19,6 +19,11 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
+      },
+    },
+    options: {
+      storySort: {
+        order: ["Introduction", "Theme", "Components"],
       },
     },
   },
