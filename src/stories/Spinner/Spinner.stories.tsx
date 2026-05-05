@@ -44,7 +44,7 @@ export const SecondaryWithTrack: Story = {
 
 export const LargeWithTrack: Story = {
   args: {
-    variant: 'primary',
+    variant: 'tertiary',
     size: 80,
     enableTrackSlot: true,
   },

@@ -20,13 +20,18 @@ if (fs.existsSync(componentDir)) {
 
 fs.mkdirSync(componentDir, { recursive: true });
 
-const componentTemplate = `
-import React from "react";
-import styled from "styled-components";
-import type { CSSProperties, HTMLAttributes } from "react";
+const componentTemplate = `import styled from "styled-components";
 
-const Styled${componentName} = styled.div\`
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+const Styled${componentName} = styled.div<{
+  $variant: string;
+}>\`
+  \${({ $variant, theme }) => {
+    const bgMain = theme[$variant]?.main || "#000";
+    const bgText = theme[$variant]?.text || "#fff";
+    return \`
+      font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    \`;
+  }};
 \`;
 
 export const ${componentName} = ({ children }: any) => {

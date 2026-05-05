@@ -9,13 +9,6 @@ const iconMap = {
   error: XCircle,
 };
 
-const colorMap = {
-  info: "blue", 
-  success: "green",
-  warning: "orange",
-  error: "red",
-}
-
 // 1. Contenedor principal
 const StyledAlert = styled.div<{ $variant: string }>`
   gap: ${({ theme }) => theme.spacing(1)};
@@ -26,11 +19,11 @@ const StyledAlert = styled.div<{ $variant: string }>`
   border-radius: 8px;
   position: relative;
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border: 1px solid ${({ $variant, theme }) => theme?.palette?.[$variant]?.main || 'transparent'};
+  border: 1px solid ${({ $variant, theme }) => theme?.colors?.semantic?.[$variant] || 'transparent'};
   
   ${({ $variant, theme }) => `
-    background-color: ${theme?.palette?.[$variant]?.light};
-    color: ${theme?.palette?.[$variant]?.text};
+    background-color: ${theme?.semantic?.[$variant]};
+    color: ${theme?.colors?.semantic?.[$variant] || 'inherit'};
   `};
 
   .title {
@@ -41,7 +34,7 @@ const StyledAlert = styled.div<{ $variant: string }>`
   .description {
     margin: 0;
     font-size: ${({ theme }) => theme.sizes.small.fontSize};
-    color: ${({ theme, $variant }) => theme?.palette?.[$variant]?.text || 'inherit'};
+    color: ${({ theme, $variant }) => theme?.colors?.semantic?.[$variant] || 'inherit'};
   }
 `;
 
@@ -74,10 +67,9 @@ const CloseButton = styled.button`
 // 3. El componente final
 export const Alert = ({ variant = 'info', title, description, onClose }: any) => {
   const Icon = iconMap[variant];
-  const color = colorMap[variant] || 'blue';
 
   return (
-    <StyledAlert $variant={color}>
+    <StyledAlert $variant={variant}>
       {Icon && (
         <IconWrapper>
           <Icon size={20} />

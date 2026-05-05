@@ -28,9 +28,9 @@ const StyledButton = styled.button<{ $variant: string; $size: string , $transpar
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
   padding: ${theme.sizes[$size].padding};
   font-size: ${theme.sizes[$size].fontSize};
-  color: ${$transparent ? theme[$variant]?.main : theme[$variant]?.text};
-  background: ${$transparent ? "transparent" : theme[$variant]?.main};
-  border: ${$transparent ? `1px solid ${theme[$variant]?.main}` : "0"};
+  color: ${$transparent ? theme?.colors?.[$variant]?.[500] : theme?.colors?.neutral?.[0]};
+  background: ${$transparent ? "transparent" : theme?.colors?.[$variant]?.[500]};
+  border: ${$transparent ? `1px solid ${theme?.colors?.[$variant]?.[500]}` : "0"};
 `};`;
 
 /** Primary UI component for user interaction */

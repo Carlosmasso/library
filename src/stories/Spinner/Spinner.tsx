@@ -33,7 +33,7 @@ const StyledSpinner = styled.div<{
       border: ${strokeWidth}px solid ${$enableTrackSlot ? 'rgba(0, 0, 0, 0.1)' : 'transparent'};
       
       /* La parte animada debe tener el mismo grosor */
-      border-top-color: ${theme[$variant]?.main || 'currentColor'};
+      border-top-color: ${theme?.colors?.[$variant]?.[500] || 'currentColor'};
 
       @keyframes rotation {
         0% { transform: rotate(0deg); }

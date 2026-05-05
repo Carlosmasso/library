@@ -15,26 +15,26 @@ const sizes = {
   },
 };
 
-const primary = {
-  dark: "#004186ff",
-  main: "#007bff",
-  light: "#75b8ffff",
-  text: "#ffffff",
-};
+// const primary = {
+//   dark: "#004186ff",
+//   main: "#007bff",
+//   light: "#75b8ffff",
+//   text: "#ffffff",
+// };
 
-const secondary = {
-  dark: "#8c0000ff",
-  main: "#d30000ff",
-  light: "#ffa1a1ff",
-  text: "#ffffff",
-};
+// const secondary = {
+//   dark: "#8c0000ff",
+//   main: "#d30000ff",
+//   light: "#ffa1a1ff",
+//   text: "#ffffff",
+// };
 
-const tertiary = {
-  dark: "#00720aff",
-  main: "#00ff15ff",
-  light: "#9affa2ff",
-  text: "#ffffff",
-};
+// const tertiary = {
+//   dark: "#00720aff",
+//   main: "#00ff15ff",
+//   light: "#9affa2ff",
+//   text: "#ffffff",
+// };
 
 const palette = {
   blue: {
@@ -68,24 +68,24 @@ const palette = {
 };
 
 export const lightTheme = {
-  primary,
-  secondary,
-  tertiary,
+  // primary,
+  // secondary,
+  // tertiary,
   palette,
   sizes,
   spacing: (rem) => `${rem * 12}px`,
   colors: {
     primary: {
-      50: "#eef2ff",
-      100: "#e0e7ff",
-      200: "#c7d2fe",
-      300: "#a5b4fc",
-      400: "#818cf8",
-      500: "#6366f1",
-      600: "#4f46e5",
-      700: "#4338ca",
-      800: "#3730a3",
-      900: "#312e81",
+      50: "#eff6ff",
+      100: "#dbeafe",
+      200: "#bfdbfe",
+      300: "#93c5fd",
+      400: "#60a5fa",
+      500: "#3b82f6",
+      600: "#2563eb",
+      700: "#1d4ed8",
+      800: "#1e40af",
+      900: "#1e3a8a",
     },
     secondary: {
       50: "#ecfdf5",
@@ -99,6 +99,18 @@ export const lightTheme = {
       800: "#065f46",
       900: "#064e3b",
     },
+    tertiary: {
+      50: "#fef2f2",
+      100: "#fee2e2",
+      200: "#fecaca",
+      300: "#fca5a5",
+      400: "#f87171",
+      500: "#ef4444",
+      600: "#dc2626",
+      700: "#b91c1c",
+      800: "#991b1b",
+      900: "#7f1d1d",
+    },
     neutral: {
       0: "#ffffff",
       100: "#f5f5f5",
@@ -108,7 +120,7 @@ export const lightTheme = {
       900: "#171717",
     },
     semantic: {
-      success: "#22c55e",
+      success: "#059669",
       warning: "#f59e0b",
       error: "#ef4444",
       info: "#3b82f6",

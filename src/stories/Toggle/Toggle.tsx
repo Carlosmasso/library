@@ -12,8 +12,8 @@ const StyledToggle = styled.div<{
 }>`
   ${({ $variant, $size, $orientation, $itemCount, $selectedIndex, theme }) => {
     const isVertical = $orientation === "vertical";
-    const bgMain = theme[$variant]?.main || "#000";
-    const bgText = theme[$variant]?.text || "#fff";
+    const bgMain = theme?.colors?.[$variant]?.[500] || "#000";
+    const bgText = theme?.colors?.neutral?.[0] || "#fff";
 
     return `
       display: flex;
@@ -102,7 +102,7 @@ export const Toggle = ({
     onChange?.(value);
   };
 
-  console.log("Selected value:", selected, defaultValue);
+  if (!options || options.length === 0) return null; // O un mensaje de "No options available"
 
   return (
     <StyledToggle

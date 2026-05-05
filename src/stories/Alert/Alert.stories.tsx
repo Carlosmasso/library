@@ -36,3 +36,26 @@ export const Error: Story = {
     onClose: () => alert("Cerrado"),
   },
 };
+
+export const Warning: Story = {
+  args: {
+    variant: "warning",
+    title: "Advertencia",
+    description: "Tu sesión está a punto de expirar.",
+  },
+};
+
+export const Info: Story = {
+  args: {
+    variant: "info",
+    title: "Información",
+    description: "Hay una nueva actualización disponible.",
+  },
+};
+
+export const NoDescription: Story = {
+  args: {
+    variant: "info",
+    title: "Solo título",
+  },
+};

@@ -6,8 +6,8 @@ const StyledAvatar = styled.div<{
   $shape: "circle" | "square";
 }>`
   ${({ $dimension, $shape, $variant, theme }) => {
-    const bgMain = theme[$variant]?.main || "#000";
-    const bgText = theme[$variant]?.text || "#fff";
+    const bgMain = theme?.colors?.[$variant]?.[500] || "#000";
+    const bgText = theme?.colors?.neutral?.[0] || "#fff";
     return `
 
       display: flex;

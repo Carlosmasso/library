@@ -55,6 +55,14 @@ export const Secondary: Story = {
   },
 };
 
+export const Tertiary: Story = {
+  args: {
+    options: options,
+    variant: 'tertiary',
+    onChange: (value) => console.log('Clicked! Value Tertiary: ' + value),
+  },
+};
+
 export const DefaultValue: Story = {
   args: {
     options: options,
@@ -68,5 +76,29 @@ export const Vertical: Story = {
     options: options,
     variant: 'primary',
     orientation: 'vertical',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    options: options,
+    variant: 'primary',
+    size: 'large',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    options: options,
+    variant: 'primary',
+    size: 'small',
+  },
+};
+
+export const NoOptions: Story = {
+  args: {
+    options: [],
+    variant: 'primary',
+    onChange: (value) => console.log('Clicked! Value NoOptions: ' + value),
   },
 };
