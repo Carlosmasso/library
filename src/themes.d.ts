@@ -24,7 +24,9 @@ declare module "styled-components" {
       neutral: object;
       semantic: object;
       background: object;
-      text: object;
+      text: {
+        inverse: string;
+      };
     };
   }
 }

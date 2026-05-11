@@ -23,7 +23,7 @@ const StyledAlert = styled.div<{ $variant: string }>`
   
   ${({ $variant, theme }) => `
     background-color: ${theme?.palette?.semantic?.[$variant]};
-    color: ${theme?.palette?.semantic?.[$variant] || 'inherit'};
+    color: ${theme?.palette?.text?.inverse || 'inherit'};
   `};
 
   .title {
@@ -34,7 +34,7 @@ const StyledAlert = styled.div<{ $variant: string }>`
   .description {
     margin: 0;
     font-size: ${({ theme }) => theme.sizes.small.fontSize};
-    color: ${({ theme, $variant }) => theme?.palette?.semantic?.[$variant] || 'inherit'};
+    color: ${({ theme }) => theme?.palette?.text?.inverse || 'inherit'};
   }
 `;
 
