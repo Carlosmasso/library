@@ -1,50 +1,66 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+
+// 1. Animación para el movimiento del degradado (Wave/Shimmer)
+const waveKeyframes = keyframes`
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+`;
+
+// 2. Animación para el parpadeo suave (Pulse)
+const pulseKeyframes = keyframes`
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+`;
 
 const StyledSkeleton = styled.div<{
   $variant: string;
   $width: number;
   $height: number;
+  $animation: "pulse" | "wave";
 }>`
-  ${({ $variant, $width, $height, theme }) => {
-    const neutral = theme.palette?.neutral || {};
+  width: ${({ $width }) => $width}px;
+  height: ${({ $height }) => $height}px;
+  border-radius: ${({ $variant }) => ($variant === "circular" ? "50%" : "4px")};
 
-    return `
-      width: ${$width}px;
-      height: ${$height}px;
-      border-radius: ${$variant === "circular" ? "50%" : "4px"};
-      font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Color base común */
+  background-color: ${({ theme }) =>
+    theme.palette?.neutral?.[300] || "#e2e5e7"};
 
-       background-image: linear-gradient(
-        90deg, 
-        ${neutral[300]} 0, 
-        ${neutral[100]} 30%, 
-        ${neutral[100]} 70%, 
-        ${neutral[300]} 100%
+  /* --- LÓGICA DE WAVE / SHIMMER --- */
+  ${({ $animation, theme }) =>
+    $animation === "wave" &&
+    css`
+      background-image: linear-gradient(
+        90deg,
+        ${theme.palette?.neutral?.[300] || "#e2e5e7"} 25%,
+        ${theme.palette?.neutral?.[100] || "#f5f5f5"} 50%,
+        ${theme.palette?.neutral?.[300] || "#e2e5e7"} 75%
       );
+      background-size: 200% 100%;
+      animation: ${waveKeyframes} 2s infinite linear;
+    `}
 
-      /* 3. Estirar el fondo para que pueda "viajar" */
-      background-size: 200% 100%; 
-      
-      /* 4. La animación */
-      animation: shimmer 2s infinite;
-
-      @keyframes shimmer {
-        0% {
-          background-position: 100% 0;
-        }
-        100% {
-          background-position: -100% 0;
-        }
-      }
-
-    `;
-  }};
+  /* --- LÓGICA DE PULSE --- */
+  ${({ $animation }) =>
+    $animation === "pulse" &&
+    css`
+      animation: ${pulseKeyframes} 1.5s infinite ease-in-out;
+    `}
 `;
 
 export const Skeleton = ({
   width = 100,
-  height = 100,
+  height = 20,
   variant = "rectangular",
+  animation = "pulse", // Por defecto ahora sí se verá diferente a wave
 }: any) => {
-  return <StyledSkeleton $variant={variant} $width={width} $height={height} />;
+  return (
+    <StyledSkeleton
+      $variant={variant}
+      $animation={animation}
+      $width={width}
+      $height={height}
+    />
+  );
 };

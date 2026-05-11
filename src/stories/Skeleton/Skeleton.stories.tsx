@@ -38,3 +38,20 @@ export const Rectangular: Story = {
     height: 100,
   },
 };
+
+export const WithShimmer: Story = {
+  args: {
+    width: 200,
+    height: 100,
+    variant: "rectangular",
+  },
+};
+
+export const WithPulse: Story = {
+  args: {
+    width: 200,
+    height: 100,
+    animation: 'wave',
+    variant: "rectangular",
+  },
+};
