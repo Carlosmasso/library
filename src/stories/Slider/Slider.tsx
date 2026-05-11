@@ -41,8 +41,8 @@ const Tooltip = styled.div<{ $left: number; $vertical: boolean }>`
   font-weight: 500;
   line-height: 1;
 
-  background: ${({ theme }) => theme.colors?.neutral?.[700] || "#111"};
-  color: ${({ theme }) => theme.colors?.neutral?.[0] || "#fff"};
+  background: ${({ theme }) => theme.palette?.neutral?.[700] || "#111"};
+  color: ${({ theme }) => theme.palette?.neutral?.[0] || "#fff"};
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -104,9 +104,9 @@ const StyledSlider = styled.input<{
   $vertical: boolean;
 }>`
   ${({ $variant, $disabled, $progress, $vertical, theme }) => {
-    const variantTheme = theme.colors?.[$variant] || {};
+    const variantTheme = theme.palette?.[$variant] || {};
     const main = variantTheme[500] || "#6366f1";
-    const track = theme.colors?.neutral?.[300] || "#e5e7eb";
+    const track = theme.palette?.neutral?.[300] || "#e5e7eb";
 
     return `
       -webkit-appearance: none;

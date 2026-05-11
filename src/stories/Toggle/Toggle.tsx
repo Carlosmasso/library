@@ -12,8 +12,8 @@ const StyledToggle = styled.div<{
 }>`
   ${({ $variant, $size, $orientation, $itemCount, $selectedIndex, theme }) => {
     const isVertical = $orientation === "vertical";
-    const bgMain = theme?.colors?.[$variant]?.[500] || "#000";
-    const bgText = theme?.colors?.neutral?.[0] || "#fff";
+    const bgMain = theme?.palette?.[$variant]?.[500] || "#000";
+    const bgText = theme?.palette?.neutral?.[0] || "#fff";
 
     return `
       display: flex;

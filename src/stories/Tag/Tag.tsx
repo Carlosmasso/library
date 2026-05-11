@@ -18,8 +18,8 @@ const StyledTag = styled.div<{ $variant: string; $size: string }>`
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   cursor: pointer;
   ${({ $variant, $size, theme }) => `
-    color: ${theme.colors.neutral[0]};
-    background: ${theme?.colors?.[$variant]?.[500]};
+    color: ${theme.palette.neutral[0]};
+    background: ${theme?.palette?.[$variant]?.[500]};
     padding: ${theme.sizes[$size].padding};
     font-size: ${theme.sizes[$size].fontSize};
   `};

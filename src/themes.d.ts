@@ -1,10 +1,7 @@
-import 'styled-components';
+import "styled-components";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
-    primary: object;
-    secondary: object;
-    tertiary: object;
     sizes: {
       small: {
         padding: string;
@@ -20,6 +17,14 @@ declare module 'styled-components' {
       };
     };
     spacing: (rem: number) => string;
-    palette: object;
+    palette: {
+      primary: object;
+      secondary: object;
+      tertiary: object;
+      neutral: object;
+      semantic: object;
+      background: object;
+      text: object;
+    };
   }
 }

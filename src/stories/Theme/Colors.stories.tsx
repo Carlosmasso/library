@@ -13,7 +13,7 @@ type Story = StoryObj;
 
 function ThemeColors() {
   const theme = useTheme() as any;
-  const palette = theme.colors;
+  const palette = theme.palette;
 
   return (
     <div

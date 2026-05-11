@@ -19,11 +19,11 @@ const StyledAlert = styled.div<{ $variant: string }>`
   border-radius: 8px;
   position: relative;
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border: 1px solid ${({ $variant, theme }) => theme?.colors?.semantic?.[$variant] || 'transparent'};
+  border: 1px solid ${({ $variant, theme }) => theme?.palette?.semantic?.[$variant] || 'transparent'};
   
   ${({ $variant, theme }) => `
-    background-color: ${theme?.semantic?.[$variant]};
-    color: ${theme?.colors?.semantic?.[$variant] || 'inherit'};
+    background-color: ${theme?.palette?.semantic?.[$variant]};
+    color: ${theme?.palette?.semantic?.[$variant] || 'inherit'};
   `};
 
   .title {
@@ -34,7 +34,7 @@ const StyledAlert = styled.div<{ $variant: string }>`
   .description {
     margin: 0;
     font-size: ${({ theme }) => theme.sizes.small.fontSize};
-    color: ${({ theme, $variant }) => theme?.colors?.semantic?.[$variant] || 'inherit'};
+    color: ${({ theme, $variant }) => theme?.palette?.semantic?.[$variant] || 'inherit'};
   }
 `;
 

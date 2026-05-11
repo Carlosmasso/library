@@ -95,10 +95,10 @@ const Bubble = styled.div<{
   padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid
-    ${({ $variant, theme }) => theme.colors?.semantic?.[$variant] || "#111827"};
+    ${({ $variant, theme }) => theme.palette?.semantic?.[$variant] || "#111827"};
   background: ${({ $variant, theme }) =>
-    theme.colors?.semantic?.[$variant] || "#111827"};
-  color: ${({ theme }) => theme.colors?.neutral?.[0] || "#f9fafb"};
+    theme.palette?.semantic?.[$variant] || "#111827"};
+  color: ${({ theme }) => theme.palette?.neutral?.[0] || "#f9fafb"};
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   max-width: ${({ $maxWidth }) => $maxWidth}px;
   font-size: 12px;
@@ -247,7 +247,7 @@ const Arrow: React.FC<ArrowProps> = ({ side, variant, cross }) => {
   // const { bg, border } = VARIANT_STYLES[variant];
   const theme = useTheme();
   const bg = variant
-    ? theme?.colors?.semantic?.[variant] || "#111827"
+    ? theme?.palette?.semantic?.[variant] || "#111827"
     : "#111827";
   const border = "transparent";
 
